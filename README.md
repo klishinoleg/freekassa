@@ -17,7 +17,9 @@ fk = Freekassa(shop_id=SHOP_ID, api_key=API_KEY)
 
 ## Запрос баланса
 
-fk.get_balance()
+```
+fk.get_balance() 
+```
 
 ```
     {
