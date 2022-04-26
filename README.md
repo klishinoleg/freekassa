@@ -8,9 +8,9 @@ pip install freekassa
 
 from freekassa import Freekassa
 
-SHOP_ID = ''
-API_KEY = ''
-fk = Freekassa(shop_id=SHOP_ID, api_key=API_KEY)
+- SHOP_ID = ''
+- API_KEY = ''
+- fk = Freekassa(shop_id=SHOP_ID, api_key=API_KEY)
 
 ## Запрос баланса
 
