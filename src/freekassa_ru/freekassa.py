@@ -56,7 +56,12 @@ class Freekassa:
         return data
 
     def _get_signature(self, data):
-        msg = '|'.join([str(i) for i in OrderedDict(sorted(data.items())).values()])
+        cdata = dict(data)
+        if 'amount' in cdata:
+            amount = cdata['amount']
+            _ = f"{amount % 100}"[1:4] if amount % 100 > 0 else ''
+            cdata['amount'] = f"{int(amount)}{_}"
+        msg = '|'.join([str(cdata.get(key)) for key in sorted(cdata.keys())])
         hash_object = hmac.new(
             key=self._api_key.encode(),
             msg=msg.encode(),
