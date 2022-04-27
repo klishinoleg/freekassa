@@ -53,11 +53,13 @@ class Freekassa:
         return data
 
     def _get_signature(self, data):
-        return hmac.new(
+        msg = '|'.join([str(i) for i in OrderedDict(sorted(data.items())).values()])
+        hash_object = hmac.new(
             key=self._api_key.encode(),
-            msg='|'.join(data).encode(),
+            msg=msg.encode(),
             digestmod=hashlib.sha256
-        ).hexdigest()
+        )
+        return hash_object.hexdigest()
 
     def _request(self, route, additional_fields=None, **kwargs):
         if additional_fields is None:
@@ -68,6 +70,8 @@ class Freekassa:
             message = response.json().get('msg')
         if 'message' in response.json():
             message = response.json().get('message')
+        if 'error' in response.json():
+            message = response.json().get('error')
         if response.status_code == 400:
             raise FreekassaError(message)
         if response.status_code == 401:
