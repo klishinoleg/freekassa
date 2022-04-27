@@ -2,7 +2,7 @@
 
 # Установка
 
-pip install freekassa
+pip install freekassa-ru
 
 # Использование API
 
