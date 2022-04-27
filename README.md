@@ -7,7 +7,7 @@ pip install freekassa-ru
 # Использование API
 
 ```
-from freekassa import Freekassa
+from freekassa_ru import Freekassa
 
 
 SHOP_ID = ''
@@ -72,7 +72,7 @@ list = fk.get_orders()
 ### Получить название статуса:
 
 ```
-from freekassa import get_order_label
+from freekassa_ru import get_order_label
 
 print(get_order_label(order.get('status')))
 ```
@@ -222,7 +222,7 @@ fk.get_shops()
 # Обработка ответа о платеже
 
 ```
-  from freekassa import Notification
+  from freekassa_ru import Notification
   
   SECRET_KEY_2 = ''
   ip = '0.0.0.0' # IP, с которого пришел запрос
@@ -235,7 +235,7 @@ fk.get_shops()
 # Обработка ошибок
 
 ```
-from freekassa import FreekassaError, FreekassaAuthError, FreekassaNotificationError
+from freekassa_ru import FreekassaError, FreekassaAuthError, FreekassaNotificationError
 
 try:
     fk.get_balance()
