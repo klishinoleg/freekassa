@@ -38,6 +38,9 @@ class Freekassa:
     def __init__(self, api_key, shop_id):
         self._api_key = api_key
         self._shop_id = shop_id
+        self._set_nonce()
+
+    def _set_nonce(self):
         self._nonce = int(datetime.datetime.now().timestamp())
 
     def _get_url(self, route, **kwargs):
@@ -62,6 +65,7 @@ class Freekassa:
         return hash_object.hexdigest()
 
     def _request(self, route, additional_fields=None, **kwargs):
+        self._set_nonce()
         if additional_fields is None:
             additional_fields = {}
         response = requests.post(url=self._get_url(route, **kwargs), json=self._get_data(additional_fields))
