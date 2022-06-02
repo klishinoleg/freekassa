@@ -35,7 +35,8 @@ class Notification:
         self.ip = ip
 
     def check_signature(self):
-        if not hashlib.md5(f'{self.shop_id}:{self.amount}:{self.secret2}:{self.payment_id}').hexdigest() == self.sing:
+        if not hashlib.md5(
+                f'{self.shop_id}:{self.amount}:{self.secret2}:{self.payment_id}'.encode()).hexdigest() == self.sing:
             raise FreekassaNotificationError(f'Invalid signature')
 
     def check_ip(self):
