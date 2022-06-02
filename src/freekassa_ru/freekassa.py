@@ -59,7 +59,7 @@ class Freekassa:
         cdata = dict(data)
         if 'amount' in cdata:
             amount = cdata['amount']
-            _ = f"{amount % 100}"[1:4] if amount % 100 > 0 else ''
+            _ = f"{round(amount % 1, 2)}"[1:4] if amount % 1 > 0 else ''
             cdata['amount'] = f"{int(amount)}{_}"
         msg = '|'.join([str(cdata.get(key)) for key in sorted(cdata.keys())])
         hash_object = hmac.new(
